@@ -8,225 +8,203 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
-body {
-    background: #0a0a0a;
-    color: white;
-    overflow-x: hidden;
-}
-
-/* BACKGROUND EFFECT */
-.bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 30%, #1a1a1a, #000);
-    z-index: -1;
+body{
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 80px 20px 40px;
+header{
+text-align:center;
+padding:80px 20px;
 }
 
-header h1 {
-    font-size: 42px;
-    letter-spacing: 2px;
-    animation: fadeDown 1.2s ease;
+header h1{
+font-size:40px;
+animation:fadeDown 1s;
 }
 
-header p {
-    opacity: 0.7;
-    margin-top: 10px;
-    animation: fadeDown 1.6s ease;
+/* BUBBLES */
+.prices{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
 }
 
-/* SCROLL ANIMATION */
-.hidden {
-    opacity: 0;
-    transform: translateY(60px);
-    transition: all 1s ease;
+.bubble{
+width:220px;
+padding:25px;
+border-radius:40px;
+background:#1a1a1a;
+cursor:pointer;
+transition:.3s;
 }
 
-.show {
-    opacity: 1;
-    transform: translateY(0);
+.bubble:hover{
+transform:scale(1.1);
+background:#2a2a2a;
 }
 
-/* PRICE GRID */
-.prices {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 40px 20px;
+.bubble h3{margin-bottom:10px}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999;
 }
 
-/* BUBBLE STYLE */
-.bubble {
-    width: 220px;
-    padding: 30px;
-    border-radius: 40px;
-    background: linear-gradient(145deg, #1c1c1c, #2a2a2a);
-    box-shadow: 0 0 20px rgba(255,255,255,0.05);
-    transition: 0.4s;
-    position: relative;
-    overflow: hidden;
+.popup img{
+width:80%;
+max-width:400px;
+border-radius:20px;
+margin:10px;
 }
 
-.bubble::before {
-    content: "";
-    position: absolute;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg);
-    top: -100%;
-    left: -100%;
-    transition: 0.6s;
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+cursor:pointer;
 }
 
-.bubble:hover::before {
-    top: 100%;
-    left: 100%;
+/* BUTTON */
+.btn{
+display:inline-block;
+margin:40px;
+padding:15px 30px;
+border-radius:30px;
+background:#e1306c;
+color:white;
+text-decoration:none;
 }
 
-.bubble:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 35px rgba(255,255,255,0.2);
-}
-
-.bubble h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.bubble p {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* INSTAGRAM BUTTON */
-.contact {
-    text-align: center;
-    margin: 60px 20px;
-}
-
-.btn {
-    padding: 18px 40px;
-    border-radius: 50px;
-    background: linear-gradient(45deg, #e1306c, #ff7a18);
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    transition: 0.3s;
-    display: inline-block;
-}
-
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    opacity: 0.5;
-    padding: 30px;
-    font-size: 14px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeDown {
-    from {opacity: 0; transform: translateY(-50px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    header h1 {
-        font-size: 28px;
-    }
-
-    .bubble {
-        width: 85%;
-    }
+/* ANIM */
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-40px)}
+to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
 <header>
-    <h1>Burhaniye Tattoo</h1>
-    <p>Sanatını tenine taşı</p>
+<h1>Burhaniye Tattoo</h1>
 </header>
 
 <section class="prices">
 
-<div class="bubble hidden">
+<div class="bubble" onclick="openGallery('minimal')">
 <h3>Minimal Dövme</h3>
 <p>1000 ₺</p>
 </div>
 
-<div class="bubble hidden">
+<div class="bubble" onclick="openGallery('half')">
 <h3>Yarım Kol Ön Yüz</h3>
 <p>8000 ₺</p>
 </div>
 
-<div class="bubble hidden">
+<div class="bubble" onclick="openGallery('fullhalf')">
 <h3>Yarım Kol Komple</h3>
 <p>15000 ₺</p>
 </div>
 
-<div class="bubble hidden">
+<div class="bubble" onclick="openGallery('full')">
 <h3>Tam Kol</h3>
 <p>30000 ₺</p>
 </div>
 
-<div class="bubble hidden">
+<div class="bubble" onclick="openGallery('shoulder')">
 <h3>Yarım Omuz</h3>
 <p>15000 ₺</p>
 </div>
 
-<div class="bubble hidden">
+<div class="bubble" onclick="openGallery('remove')">
 <h3>Dövme Silme</h3>
 <p>1500 - 3000 ₺</p>
 </div>
 
 </section>
 
-<div class="contact">
+<div style="text-align:center;">
 <a href="https://www.instagram.com/burhaniye_tattoo/" target="_blank" class="btn">
-İletişim için Instagram'a Git
+Instagram’dan İletişim
 </a>
 </div>
 
-<footer>
-© 2026 Burhaniye Tattoo
-</footer>
+<!-- POPUP -->
+<div class="popup" id="popup">
+<span class="close" onclick="closeGallery()">✖</span>
+<div id="gallery"></div>
+</div>
 
 <script>
-/* SCROLL ANIMATION */
-const elements = document.querySelectorAll('.hidden');
+const images = {
+minimal:[
+"https://source.unsplash.com/400x400/?minimal,tattoo",
+"https://source.unsplash.com/401x400/?small,tattoo",
+"https://source.unsplash.com/402x400/?tiny,tattoo"
+],
+half:[
+"https://source.unsplash.com/400x400/?half,sleeve,tattoo",
+"https://source.unsplash.com/401x400/?arm,tattoo",
+"https://source.unsplash.com/402x400/?black,grey,tattoo"
+],
+fullhalf:[
+"https://source.unsplash.com/400x400/?sleeve,tattoo",
+"https://source.unsplash.com/401x400/?tattoo,arm",
+"https://source.unsplash.com/402x400/?ink,arm"
+],
+full:[
+"https://source.unsplash.com/400x400/?full,sleeve,tattoo",
+"https://source.unsplash.com/401x400/?realistic,tattoo",
+"https://source.unsplash.com/402x400/?tattoo,design"
+],
+shoulder:[
+"https://source.unsplash.com/400x400/?shoulder,tattoo",
+"https://source.unsplash.com/401x400/?upper,arm,tattoo",
+"https://source.unsplash.com/402x400/?tattoo,shoulder"
+],
+remove:[
+"https://source.unsplash.com/400x400/?laser,tattoo",
+"https://source.unsplash.com/401x400/?tattoo,removal",
+"https://source.unsplash.com/402x400/?skin,laser"
+]
+};
 
-window.addEventListener('scroll', () => {
-    elements.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 50){
-            el.classList.add('show');
-        }
-    });
+function openGallery(type){
+let popup=document.getElementById("popup");
+let gallery=document.getElementById("gallery");
+
+gallery.innerHTML="";
+
+images[type].forEach(src=>{
+let img=document.createElement("img");
+img.src=src;
+gallery.appendChild(img);
 });
+
+popup.style.display="flex";
+}
+
+function closeGallery(){
+document.getElementById("popup").style.display="none";
+}
 </script>
 
 </body>

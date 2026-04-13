@@ -51,33 +51,6 @@ transition:.3s;
 }
 .btn:hover{transform:scale(1.05);}
 
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:15px;
-border-radius:50%;
-font-size:22px;
-z-index:999;
-}
-
-.prices{
-display:flex;
-justify-content:center;
-gap:20px;
-padding:20px;
-flex-wrap:wrap;
-}
-
-.bubble{
-width:220px;
-padding:25px;
-border-radius:25px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(5px);
-}
-
 .gallery{
 display:flex;
 flex-wrap:wrap;
@@ -136,23 +109,18 @@ color:#aaa;
 <img src="logo.png" class="logo-img">
 <p>Profesyonel & Hijyenik Dövme</p>
 
-<a href="https://wa.me/905XXXXXXXXX" class="btn">WhatsApp</a>
-<a href="https://www.instagram.com/burhaniye_tattoo/" class="btn">Instagram</a>
+<a href="https://www.instagram.com/burhaniye_tattoo/" class="btn">Rezervasyon</a>
 </header>
 
-<section class="prices">
-<div class="bubble">Minimal Dövme<br><b>1000 ₺</b></div>
-</section>
-
-<!-- 🔥 FİYAT HESAPLAMA -->
+<!-- FİYAT HESAPLAMA -->
 <section class="section">
 <h2>Fiyat Hesapla</h2>
 
 <select id="size">
 <option value="">Boyut Seç</option>
-<option value="2250">Küçük (2000 - 2500 ₺)</option>
-<option value="3000">Orta (1500 - 4500 ₺)</option>
-<option value="10000">Büyük (5000 - 45000 ₺)</option>
+<option value="2250">Küçük</option>
+<option value="3000">Orta</option>
+<option value="10000">Büyük</option>
 </select>
 
 <br>
@@ -161,7 +129,7 @@ color:#aaa;
 <option value="">Stil Seç</option>
 <option value="8000">Minimal</option>
 <option value="2500">Yazı</option>
-<option value="2000">Realistik (+2000)</option>
+<option value="2000">Realistik</option>
 </select>
 
 <br><br>
@@ -169,12 +137,11 @@ color:#aaa;
 <button onclick="calcPrice()" class="btn">Fiyat Hesapla</button>
 
 <h3 id="result"></h3>
-
-<a id="waBtn" target="_blank" class="btn">WhatsApp ile Sor</a>
 </section>
 
+<!-- GALERİ -->
 <section class="section">
-<h2>Çalışmalar</h2>
+<h2>Örnek Dövmelerimiz</h2>
 
 <div class="gallery">
 <img src="1.jpg" onclick="openFull(this.src)">
@@ -204,8 +171,6 @@ width="90%" height="250" style="border-radius:20px;"></iframe>
 <img id="fullImg">
 </div>
 
-<a href="https://wa.me/905XXXXXXXXX" class="whatsapp">💬</a>
-
 <footer>
 © 2026 Burhaniye Tattoo
 </footer>
@@ -233,9 +198,6 @@ let total = parseInt(size) + parseInt(style);
 
 document.getElementById("result").innerHTML =
 "Yaklaşık Fiyat: " + total + " ₺";
-
-document.getElementById("waBtn").href =
-"https://wa.me/905XXXXXXXXX?text=Merhaba%20yaklaşık%20fiyat:%20" + total + "%20TL";
 }
 </script>
 

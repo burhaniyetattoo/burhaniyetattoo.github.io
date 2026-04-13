@@ -9,7 +9,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0a0a0a">
 
 <style>
@@ -71,6 +70,7 @@ font-size:20px;
 color:#ff4da6;
 }
 
+/* GALERİ */
 .gallery{
 display:flex;
 flex-wrap:wrap;
@@ -81,8 +81,10 @@ gap:10px;
 .gallery img{
 width:45%;
 border-radius:15px;
+cursor:pointer;
 }
 
+/* FULLSCREEN */
 .fullscreen{
 position:fixed;
 top:0;left:0;
@@ -125,7 +127,6 @@ width:90%;
 <select id="style">
 <option value="">Stil Seç</option>
 <option value="yazi">Yazı</option>
-<option value="realistik">Realistik</option>
 </select>
 
 <br><br>
@@ -156,6 +157,8 @@ width:90%;
 </div>
 
 <script>
+
+// FULLSCREEN
 function openFull(src){
 document.getElementById("full").style.display="flex";
 document.getElementById("fullImg").src=src;
@@ -165,39 +168,39 @@ function closeFull(){
 document.getElementById("full").style.display="none";
 }
 
+// FİYAT
 function calcPrice(){
 let size=document.getElementById("size").value;
 let style=document.getElementById("style").value;
 
 let min=0,max=0;
 
+// minimal
 if(size==="minimal"){
-min=1000; max=1200;
+min=900; max=1000;
 }
 
+// yazı
 if(style==="yazi"){
-if(size==="kucuk"){min=1000; max=2000;}
-if(size==="orta"){min=2500; max=4000;}
-if(size==="buyuk"){min=4000; max=7000;}
+if(size==="kucuk"){min=900; max=1500;}
+if(size==="orta"){min=1500; max=2500;}
+if(size==="buyuk"){min=2500; max=5000;}
 }
 
+// normal dövmeler
 if(size==="kucuk" && style!=="yazi"){
 min=2000; max=2500;
 }
 if(size==="orta" && style!=="yazi"){
-min=2500; max=4500;
+min=2500; max=4000;
 }
 if(size==="buyuk" && style!=="yazi"){
 min=10000; max=15000;
 }
 
-if(style==="realistik"){
-min+=500;
-max+=1000;
-}
-
 document.getElementById("result").innerHTML="Yaklaşık Fiyat: "+min+" - "+max+" ₺";
 }
+
 </script>
 
 </body>

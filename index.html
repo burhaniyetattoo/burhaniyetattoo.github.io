@@ -1,145 +1,83 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Burhaniye Tattoo</title>
+<title>Burhaniye Dövmeci | Burhaniye Tattoo Stüdyosu</title>
+
+<meta name="description" content="Burhaniye dövmeci, Burhaniye tattoo stüdyosu. Profesyonel ve hijyenik dövme hizmeti.">
+<meta name="keywords" content="burhaniye dövmeci, burhaniye tattoo, tattoo burhaniye, burhaniye dövmecisi, dövme burhaniye, tattoo stüdyo burhaniye">
+
+<meta property="og:title" content="Burhaniye Tattoo">
+<meta property="og:description" content="Burhaniye dövmeci ve tattoo stüdyosu">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TattooParlor",
+  "name": "Burhaniye Tattoo",
+  "description": "Burhaniye dövmeci ve tattoo stüdyosu",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Burhaniye",
+    "addressCountry": "TR"
+  },
+  "areaServed": "Burhaniye",
+  "keywords": "burhaniye dövmeci, burhaniye tattoo, tattoo burhaniye",
+  "url": "https://burhaniyetattoo.online"
+}
+</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+html,body{height:100%;overflow-x:hidden;}
+body{color:white;text-align:center;background:#000;}
+.bg{position:fixed;width:100%;height:100%;background:url('bg.jpg') center center no-repeat;background-size:cover;z-index:-2;}
+.overlay{position:fixed;width:100%;height:100%;background:rgba(0,25,0,0.85);z-index:-1;}
 
-html,body{
-height:100%;
-overflow-x:hidden;
-}
-
-/* 🔥 BACKGROUND FIX */
-body{
-color:white;
-text-align:center;
-background:#000;
-}
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-background:url('bg.jpg') center center no-repeat;
-background-size:cover;
-z-index:-2;
-}
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,25,0,0.85);
-z-index:-1;
-}
-
-/* 🔥 SPLASH */
-#splash{
-position:fixed;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
-transition:.6s;
-}
+#splash{position:fixed;width:100%;height:100%;background:#000;display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;transition:.6s;}
 #splash.hide{opacity:0;pointer-events:none;}
 
-.splash-logo{
-width:120px;
-animation:pulse 1.2s infinite alternate;
-}
-@keyframes pulse{
-from{transform:scale(1);}
-to{transform:scale(1.08);}
-}
+.splash-logo{width:120px;animation:pulse 1.2s infinite alternate;}
+@keyframes pulse{from{transform:scale(1);}to{transform:scale(1.08);}}
 
-.loader{
-width:120px;height:4px;background:#111;border-radius:10px;overflow:hidden;
-}
-.loader-bar{
-height:100%;background:#00ff88;width:0;
-animation:load 1.3s forwards;
-}
+.loader{width:120px;height:4px;background:#111;border-radius:10px;overflow:hidden;}
+.loader-bar{height:100%;background:#00ff88;width:0;animation:load 1.3s forwards;}
 @keyframes load{to{width:100%;}}
 
-/* HEADER */
 header{padding:50px 20px;}
 .logo-img{width:150px;}
 
-/* CONTACT */
-.contact-btn{
-position:fixed;top:15px;right:15px;
-padding:10px 15px;border-radius:30px;
-background:rgba(0,255,136,0.15);
-border:1px solid #00ff88;
-color:#00ff88;text-decoration:none;
-z-index:999;
-}
+.contact-btn{position:fixed;top:15px;right:15px;padding:10px 15px;border-radius:30px;background:rgba(0,255,136,0.15);border:1px solid #00ff88;color:#00ff88;text-decoration:none;z-index:999;}
 
-/* SECTION */
-.section{
-padding:20px;margin:10px;
-border-radius:20px;
-background:rgba(0,20,0,0.55);
-}
+.section{padding:20px;margin:10px;border-radius:20px;background:rgba(0,20,0,0.55);}
 
-/* FORM */
-select{
-padding:10px;border-radius:10px;
-background:#001a00;color:white;
-border:1px solid #00ff88;margin:5px;
-}
+select{padding:10px;border-radius:10px;background:#001a00;color:white;border:1px solid #00ff88;margin:5px;}
 
-.btn{
-padding:12px 20px;border-radius:25px;
-background:#00cc66;color:white;border:none;
-cursor:pointer;
-}
+.btn{padding:12px 20px;border-radius:25px;background:#00cc66;color:white;border:none;cursor:pointer;}
 
 .warning{color:red;display:none;}
 #result{margin-top:15px;font-size:20px;color:#00ff88;}
 
 .loading-box{display:none;}
-.needle{
-font-size:28px;
-animation:move .5s infinite alternate;
-}
-@keyframes move{
-from{transform:translateY(0);}
-to{transform:translateY(6px);}
-}
+.needle{font-size:28px;animation:move .5s infinite alternate;}
+@keyframes move{from{transform:translateY(0);}to{transform:translateY(6px);}}
 
 #note{font-size:12px;color:#ccc;opacity:0;margin-top:10px;}
 
-/* GALERİ */
-.gallery{
-display:flex;flex-wrap:wrap;
-gap:10px;justify-content:center;
-}
-.gallery img{
-width:30%;border-radius:10px;cursor:pointer;
-}
+.gallery{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.gallery img{width:30%;border-radius:10px;cursor:pointer;}
 
-/* FULLSCREEN */
-.fullscreen{
-position:fixed;width:100%;height:100%;
-background:black;display:none;
-justify-content:center;align-items:center;
-z-index:999;
-}
+.fullscreen{position:fixed;width:100%;height:100%;background:black;display:none;justify-content:center;align-items:center;z-index:999;}
 .fullscreen img{width:90%;}
 
-/* MOBILE */
 @media(max-width:768px){
 .gallery img{width:100%;}
 .logo-img{width:130px;}
@@ -147,6 +85,7 @@ z-index:999;
 
 footer{padding:15px;color:#aaa;}
 </style>
+
 </head>
 
 <body>
@@ -154,19 +93,16 @@ footer{padding:15px;color:#aaa;}
 <div class="bg"></div>
 <div class="overlay"></div>
 
-<!-- SPLASH -->
 <div id="splash">
 <img src="logo.png" class="splash-logo">
 <div class="loader"><div class="loader-bar"></div></div>
 </div>
 
-<a href="https://www.instagram.com/burhaniye_tattoo/" target="_blank" class="contact-btn">
-📩 İletişim
-</a>
+<a href="https://www.instagram.com/burhaniye_tattoo/" target="_blank" class="contact-btn">📩 İletişim</a>
 
 <header>
 <img src="logo.png" class="logo-img">
-<p>Profesyonel & Hijyenik Dövme</p>
+<p>Burhaniye dövmeci & profesyonel tattoo stüdyosu</p>
 </header>
 
 <section class="section">
@@ -232,16 +168,17 @@ footer{padding:15px;color:#aaa;}
 © 2026 Burhaniye Tattoo
 </footer>
 
-<script>
+<!-- GİZLİ SEO -->
 
-/* SPLASH */
+<div style="position:absolute; left:-9999px; font-size:1px;">
+burhaniye dövmeci burhaniye tattoo tattoo burhaniye burhaniye dövmecisi dövme burhaniye en iyi burhaniye dövmeci tattoo salonu burhaniye
+</div>
+
+<script>
 window.addEventListener("load",()=>{
-setTimeout(()=>{
-document.getElementById("splash").classList.add("hide");
-},1200);
+setTimeout(()=>{document.getElementById("splash").classList.add("hide");},1200);
 });
 
-/* GALERİ */
 function openFull(src){
 document.getElementById("full").style.display="flex";
 document.getElementById("fullImg").src=src;
@@ -250,9 +187,7 @@ function closeFull(){
 document.getElementById("full").style.display="none";
 }
 
-/* 🔥 YENİ FİYAT SİSTEMİ */
 function calcPrice(){
-
 let size=document.getElementById("size").value;
 let style=document.getElementById("style").value;
 
@@ -265,44 +200,15 @@ document.getElementById("warn").style.display="none";
 document.getElementById("loadingBox").style.display="block";
 
 setTimeout(()=>{
-
 let min=0,max=0;
 
-/* MİNİMAL */
-if(size==="minimal"){
-if(style==="yazi"){min=1000;max=1000;}
-if(style==="normal"){min=1000;max=1200;}
-if(style==="detayli"){min=1000;max=1500;}
-if(style==="golgeli"){min=1200;max=1500;}
-}
-
-/* KÜÇÜK */
-if(size==="kucuk"){
-if(style==="yazi"){min=1000;max=2000;}
-if(style==="normal"){min=1500;max=2500;}
-if(style==="detayli"){min=1500;max=3000;}
-if(style==="golgeli"){min=1500;max=3000;}
-}
-
-/* ORTA */
-if(size==="orta"){
-if(style==="yazi"){min=2000;max=3500;}
-if(style==="normal"){min=3000;max=5000;}
-if(style==="detayli"){min=3500;max=6000;}
-if(style==="golgeli"){min=3500;max=6000;}
-}
-
-/* BÜYÜK */
-if(size==="buyuk"){
-if(style==="yazi"){min=3000;max=6000;}
-if(style==="normal"){min=8000;max=13000;}
-if(style==="detayli"){min=9000;max=15000;}
-if(style==="golgeli"){min=9000;max=15000;}
-}
+if(size==="minimal"){if(style==="yazi"){min=1000;max=1000;}if(style==="normal"){min=1000;max=1200;}if(style==="detayli"){min=1000;max=1500;}if(style==="golgeli"){min=1200;max=1500;}}
+if(size==="kucuk"){if(style==="yazi"){min=1000;max=2000;}if(style==="normal"){min=1500;max=2500;}if(style==="detayli"){min=1500;max=3000;}if(style==="golgeli"){min=1500;max=3000;}}
+if(size==="orta"){if(style==="yazi"){min=2000;max=3500;}if(style==="normal"){min=3000;max=5000;}if(style==="detayli"){min=3500;max=6000;}if(style==="golgeli"){min=3500;max=6000;}}
+if(size==="buyuk"){if(style==="yazi"){min=3000;max=6000;}if(style==="normal"){min=8000;max=13000;}if(style==="detayli"){min=9000;max=15000;}if(style==="golgeli"){min=9000;max=15000;}}
 
 document.getElementById("loadingBox").style.display="none";
 
-/* OUTPUT */
 if(min===max){
 document.getElementById("result").innerHTML="Yaklaşık Fiyat: "+min+" ₺";
 }else{
@@ -312,9 +218,7 @@ document.getElementById("result").innerHTML="Yaklaşık Fiyat: "+min+" - "+max+"
 document.getElementById("note").style.opacity="1";
 
 },1000);
-
 }
-
 </script>
 
 </body>

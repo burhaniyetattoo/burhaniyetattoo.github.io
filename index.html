@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Burhaniye Tattoo | Profesyonel Dövme Stüdyosu</title>
+<title>Burhaniye Tattoo</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
@@ -19,26 +19,38 @@ background:black;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* 🔥 BACKGROUND FIX (SENKRON + FULL) */
 body::before{
 content:"";
 position:fixed;
-width:100%;height:100%;
-background:url('bg.jpg') center/cover no-repeat;
-animation:bgMove 12s infinite alternate;
+top:-5%;
+left:-5%;
+width:110%;
+height:110%;
+
+background:url('bg.jpg') center center no-repeat;
+background-size:cover;
+
+/* 🔥 SADECE SCALE (kayma yok artık) */
+animation:bgZoom 20s ease-in-out infinite alternate;
+
 z-index:-2;
 }
+
 body::after{
 content:"";
 position:fixed;
-width:100%;height:100%;
+top:0;left:0;
+width:100%;
+height:100%;
 background:rgba(0,25,0,0.85);
 z-index:-1;
 }
 
-@keyframes bgMove{
+/* 🔥 YUMUŞAK ZOOM */
+@keyframes bgZoom{
 0%{transform:scale(1);}
-100%{transform:scale(1.1);}
+100%{transform:scale(1.08);}
 }
 
 /* FADE */
@@ -66,20 +78,12 @@ border-radius:30px;
 background:#00cc66;
 color:white;
 box-shadow:0 0 10px #00ff88;
-transition:.3s;
 border:none;
 cursor:pointer;
 }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #00ff88;
-}
-
 /* SHAKE */
-.shake{
-animation:shake 0.4s;
-}
+.shake{animation:shake 0.4s;}
 @keyframes shake{
 0%{transform:translateX(0);}
 25%{transform:translateX(-5px);}
@@ -110,7 +114,6 @@ margin:5px;
 .warning{
 color:#ff4d4d;
 margin-top:10px;
-font-size:14px;
 display:none;
 }
 
@@ -122,12 +125,7 @@ color:#00ff88;
 }
 
 /* LOADING */
-.loading-box{
-display:none;
-margin-top:20px;
-}
-
-/* NEEDLE ANIMATION */
+.loading-box{display:none;margin-top:20px;}
 .needle{
 font-size:30px;
 animation:needleMove 0.6s infinite alternate;
@@ -137,7 +135,6 @@ from{transform:translateY(0);}
 to{transform:translateY(8px);}
 }
 
-/* PROGRESS */
 .progress{
 width:80%;
 height:6px;
@@ -165,6 +162,51 @@ opacity:0;
 }
 .note.show{opacity:1;}
 
+/* GALERİ */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+}
+
+.gallery img{
+width:30%;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #00ff88;
+}
+
+/* FULLSCREEN */
+.fullscreen{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:black;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+.fullscreen img{width:90%;}
+
+/* MOBILE */
+@media(max-width:768px){
+.gallery img{width:100%;}
+.logo-img{width:140px;}
+}
+
+footer{
+padding:20px;
+color:#aaa;
+font-size:12px;
+}
 </style>
 </head>
 
@@ -200,7 +242,6 @@ opacity:0;
 
 <p class="warning" id="warn">Lütfen tüm seçimleri yapın!</p>
 
-<!-- LOADING -->
 <div id="loadingBox" class="loading-box">
 <div class="needle">💉</div>
 <div>Fiyat hesaplanıyor...</div>
@@ -215,6 +256,28 @@ Bu fiyatlar dövme modeline göre değişebilir. En doğru fiyat için bize ula�
 
 </section>
 
+<section class="section fade">
+<h2>Örnek Dövmeler</h2>
+
+<div class="gallery">
+<img src="1.jpg" onclick="openFull(this.src)">
+<img src="2.jpg" onclick="openFull(this.src)">
+<img src="3.jpg" onclick="openFull(this.src)">
+<img src="4.jpg" onclick="openFull(this.src)">
+<img src="5.jpg" onclick="openFull(this.src)">
+<img src="6.jpg" onclick="openFull(this.src)">
+</div>
+
+</section>
+
+<div class="fullscreen" id="full" onclick="closeFull()">
+<img id="fullImg">
+</div>
+
+<footer>
+© 2026 Burhaniye Tattoo
+</footer>
+
 <script>
 
 // SCROLL
@@ -222,6 +285,15 @@ const observer=new IntersectionObserver(e=>{
 e.forEach(i=>{if(i.isIntersecting)i.target.classList.add("show")});
 });
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+// FULLSCREEN
+function openFull(src){
+document.getElementById("full").style.display="flex";
+document.getElementById("fullImg").src=src;
+}
+function closeFull(){
+document.getElementById("full").style.display="none";
+}
 
 // PRICE
 function calcPrice(){
@@ -232,7 +304,6 @@ let style=document.getElementById("style").value;
 let warn=document.getElementById("warn");
 let btn=document.getElementById("calcBtn");
 
-// ❗ VALIDATION
 if(!size || !style){
 warn.style.display="block";
 btn.classList.add("shake");
